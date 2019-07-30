@@ -8,10 +8,14 @@ import {MatGridListModule,MatToolbarModule, MatButtonModule, MatIconModule, MatL
 import {LayoutModule} from '@angular/cdk/layout'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
+import { CalculatorViewerComponent } from './calculator-viewer/calculator-viewer.component';
+import { Buttons } from './buttons';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
+    CalculatorViewerComponent,
 
   ],
   imports: [
@@ -27,7 +31,10 @@ import {FormsModule} from '@angular/forms';
     MatInputModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
+
   ],
+  providers: [Buttons],
   bootstrap: [AppComponent]
 
 })

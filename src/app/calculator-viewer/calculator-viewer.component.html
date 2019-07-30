@@ -1,0 +1,15 @@
+<div id="calculator">
+  <mat-form-field>
+    <input matInput placeholder="your calculus" ngModel pattern="[0-9]*" [(ngModel)] = "currentInput">
+  </mat-form-field>
+
+  <mat-grid-list cols="3" rowHeight="3:1" layout-align="center center">
+    <mat-grid-tile *ngFor="let number of buttons.digits">
+      <button mat-raised-button style="color:black; background-color: silver">{{number}}</button>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="3">
+      <button mat-raised-button style="color:black; background-color: silver">0</button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+<button (click)="displayInput()">display me</button>
