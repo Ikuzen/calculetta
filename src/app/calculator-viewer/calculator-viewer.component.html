@@ -1,15 +1,63 @@
 <div id="calculator">
-  <mat-form-field>
-    <input matInput placeholder="your calculus" ngModel pattern="[0-9]*" [(ngModel)] = "currentInput">
-  </mat-form-field>
 
-  <mat-grid-list cols="3" rowHeight="3:1" layout-align="center center">
-    <mat-grid-tile *ngFor="let number of buttons.digits">
-      <button mat-raised-button style="color:black; background-color: silver">{{number}}</button>
+  <mat-grid-list cols="4" rowHeight="1:3">
+    <mat-grid-tile colspan="4" rowHeight="fit">
+      <input matInput placeholder="your calculus" ngModel pattern="[0-9/\*\+\-\(\)x]*" [(ngModel)]="currentInput">
+
     </mat-grid-tile>
+    <!-- first tile -->
     <mat-grid-tile colspan="3">
-      <button mat-raised-button style="color:black; background-color: silver">0</button>
+      <div class="tile">
+
+        <mat-grid-list id="digits" cols="3" rowHeight="fit" gutterSize="0">
+          <!-- the digits-->
+          <mat-grid-tile *ngFor="let number of buttons.digits">
+            <button mat-raised-button style="color:black; background-color: silver"
+              (click)="buttonType(number)">{{number}}</button>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="3">
+            <button mat-raised-button style="color:black; background-color: silver" (click)="buttonType(0)">0</button>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <button (click)="equal()">=</button>
+      </div>
+    </mat-grid-tile>
+
+    <!-- second tile -->
+    <mat-grid-tile colspan="1">
+      <div class="tile">
+        <mat-grid-list id="operators" cols="1" rowHeight="fit">
+          <mat-grid-tile>
+            <button mat-raised-button style="color:black; background-color: silver" (click)="delete()">del</button>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <button mat-raised-button style="color:black; background-color: silver" (click)="reset()">ac</button>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <button mat-raised-button style="color:black; background-color: silver" (click)="buttonType('(')">(</button>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <button mat-raised-button style="color:black; background-color: silver" (click)="buttonType(')')">)</button>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <button mat-raised-button style="color:black; background-color: silver" (click)="add()">+</button>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <button mat-raised-button style="color:black; background-color: silver" (click)="sub()">-</button>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <button mat-raised-button style="color:black; background-color: silver" (click)="multiply()">x</button>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <button mat-raised-button style="color:black; background-color: silver" (click)="divide()">/</button>
+          </mat-grid-tile>
+          <!-- <mat-grid-tile *ngFor="let symbol of buttons.operations">
+            <button mat-raised-button style="color:black; background-color: silver"
+              (click)="buttonType(symbol)">{{symbol}}</button>
+          </mat-grid-tile> -->
+        </mat-grid-list>
+      </div>
     </mat-grid-tile>
   </mat-grid-list>
+
 </div>
-<button (click)="displayInput()">display me</button>
